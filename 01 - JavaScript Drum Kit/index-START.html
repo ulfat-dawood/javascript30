@@ -60,8 +60,21 @@
 <script>
 window.addEventListener('keydown', function(e){
   console.log(e.key)
+  //select an element of audio + has attibute data-key with a spesific value
   const audioElement= document.querySelector(`audio[data-key="${e.keyCode}"]`);
-  console.log(audioElement); 
+
+  //select an element with the class .key + has attibute data-key with a spesific value
+  const elementToAnimate= document.querySelector(`.key[data-key="${e.keyCode}"]`);
+
+  //if no audio found halt the function
+  if(!audioElement) return; 
+  //reset the audio from the beginning when hit consecutively, because by default it will continue playing if the same audio selected 
+  audioElement.currentTime= 0;  
+  audioElement.play(); 
+  
+  //add class .play to the element to be aminated
+  elementToAnimate.classList.add('playing')
+
 })
 </script>
 
