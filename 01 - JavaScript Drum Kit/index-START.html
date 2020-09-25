@@ -76,6 +76,12 @@ window.addEventListener('keydown', function(e){
   elementToAnimate.classList.add('playing')
 
 })
+
+const boxes= document.querySelectorAll('.key') //retuns an array of elements
+boxes.forEach( box => box.addEventListener('transitionend', function(e){
+  if(e.propertyName !== 'transform') return; 
+  this.classList.remove('playing')
+}))
 </script>
 
 
